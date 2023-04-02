@@ -1,0 +1,66 @@
+<?php
+session_start();
+
+require "../config/database.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") 
+{
+    $name = trim($_GET["name"]);
+    $dob = trim($_GET["dob"]);
+    $phone = trim($_GET["phone"]);
+    $email = trim($_GET["email"]);
+    $USN = trim($_GET["USN"]);
+    $Address = trim($_GET["Address"]);
+    $pAddress = trim($_GET["pAddress"]);
+    $Father = trim($_GET["Father"]);
+    $foccupation = trim($_GET["foccupation"]);
+    $fnum = trim($_GET["fnum"]);
+    $Mother = trim($_GET["Mother"]);
+    $moccupation = trim($_GET["moccupation"]);
+    $mnum = trim($_GET["mnum"]);
+    $lgname = trim($_GET["lgname"]);
+    $loccupation = trim($_GET["loccupation"]);
+    $lnum = trim($_GET["lnum"]);
+    $Accommodation = trim($_GET["Accommodation"]);
+    $MOA = trim($_GET["MOA"]);
+    $Rank = trim($_GET["Rank"]);
+    $KMAT = trim($_GET["KMAT"]);
+    $Class10 = trim($_GET["Class10"]);
+    $Class10Board = trim($_GET["Class10Board"]);
+    $Class10per = trim($_GET["Class10per"]);
+    $Class10cgpa = trim($_GET["Class10cgpa"]);
+    $Class12 = trim($_GET["Class12"]);
+    $Class12Board = trim($_GET["Class12Board"]);
+    $Class12per = trim($_GET["Class12per"]);
+    $Class12cgpa = trim($_GET["Class12cgpa"]);
+    $DegreeSpecilization = trim($_GET["DegreeSpecilization"]);
+    $yop = trim($_GET["yop"]);
+    $dboard = trim($_GET["dboard"]);
+    $degmarks = trim($_GET["degmarks"]);
+    $degcgpa = trim($_GET["degcgpa"]);
+    $Scholarship = trim($_GET["Scholarship"]);
+    $Achievements = trim($_GET["Achievements"]);
+    $ExtraCurricilarAchievements = trim($_GET["ExtraCurricilarAchievements"]);
+    $Health = trim($_GET["Health"]);
+    $other = trim($_GET["other"]);
+
+
+        $query = "insert into proctoring_studentdetails values('','$name','$dob','$phone','$email','$USN','$Address','$pAddress','$Father','$foccupation','$fnum','$Mother','$moccupation','$mnum','$lgname','$loccupation','$lnum','$Accommodation','$MOA','$Rank','$KMAT','$Class10','$Class10Board','$Class10per','$Class10cgpa','$Class12','$Class12Board','$Class12per','$Class12cgpa','$DegreeSpecilization','$yop','$dboard','$degmarks','$degcgpa','$Scholarship','$Achievements','$ExtraCurricilarAchievements','$Health','$other')";
+		echo $query;
+
+        if(mysqli_query($link,$query))
+        {
+            $_SESSION["add"] = "success";
+            echo"<script> location.replace('mydetails.php') </script>";
+
+        }
+        else         
+        {
+            $_SESSION["add"] = "failed";
+            echo"<script> location.replace('mydetails.php') </script>";
+        }
+
+        
+
+        mysqli_close($link);
+}
